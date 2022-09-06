@@ -1,16 +1,26 @@
 version: '3'
 services:
-  database:
+  core:
     build:
       context: .
       dockerfile: ./Dockerfile
     ports:
       - 3003:3003
       - 3004:8083
-      - 8087:8087
+      - 8086:8086
     volumes:
       - /path/for/influxdb:/var/lib/influxdb
       - /path/for/grafana:/var/lib/grafana
+
+  telegraf1:
+    container_name: telegraf
+    image: telegraf:1.19
+    restart: always
+    depends_on:
+      - core
+    volumes:
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+  
   zoo1:
     image: confluentinc/cp-zookeeper:7.2.1
     hostname: zoo1
