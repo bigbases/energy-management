@@ -96,7 +96,15 @@ services:
       KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
     volumes:
       - ./volume/kafka/kafka1/data:/var/lib/kafka/data
+      - ./kafka-connector:/connector
+      - ./data/input:/input
+      - ./data/err:/err
+      - ./data/finished:/finished
       - ./kafka/kafka1/server.properties:/etc/kafka/server.properties
+      - ./kafka/kafka1/connect-file-sink.properties:/etc/kafka/connect-file-sink.properties
+      - ./kafka/kafka1/connect-distributed.properties:/etc/kafka/connect-distributed.properties
+      - ./kafka/kafka1/connect-file-source.properties:/etc/kafka/connect-file-source.properties
+      - ./kafka/kafka1/connect-standalone.properties:/etc/kafka/connect-standalone.properties
     depends_on:
       - zoo1
       - zoo2
