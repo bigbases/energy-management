@@ -12,30 +12,6 @@ services:
       - ./volume/influxdb:/var/lib/influxdb
       - ./volume/grafana:/var/lib/grafana
 
-  telegraf1:
-    container_name: telegraf_prod
-    image: telegraf:1.19
-    restart: always
-    volumes:
-      - ./telegraf_prod/telegraf.conf:/etc/telegraf/telegraf.conf:ro
-    depends_on:
-      - core
-      - kafka1
-      - kafka2
-      - kafka3
-
-  telegraf2:
-    container_name: telegraf_con
-    image: telegraf:1.19
-    restart: always
-    volumes:
-      - ./telegraf_con/telegraf.conf:/etc/telegraf/telegraf.conf:ro
-    depends_on:
-      - core
-      - kafka1
-      - kafka2
-      - kafka3
-
   zoo1:
     image: confluentinc/cp-zookeeper:7.2.1
     hostname: zoo1
@@ -81,12 +57,12 @@ services:
   kafka1:
     image: confluentinc/cp-kafka:7.2.1
     hostname: kafka1
-    container_name: kafka_neo1
+    container_name: kafka_water1
     ports:
       - "9092:9092"
       - "29092:29092"
     environment:
-      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka1:19092,EXTERNAL://172.21.64.1:9092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka1:19092,EXTERNAL://117.17.189.208:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_ZOOKEEPER_CONNECT: "zoo1:2181,zoo2:2182,zoo3:2183"
@@ -113,12 +89,12 @@ services:
   kafka2:
     image: confluentinc/cp-kafka:7.2.1
     hostname: kafka2
-    container_name: kafka_neo2
+    container_name: kafka_water2
     ports:
       - "9093:9093"
       - "29093:29093"
     environment:
-      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka2:19093,EXTERNAL://172.21.64.1:9093
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka2:19093,EXTERNAL://117.17.189.208:9093
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_ZOOKEEPER_CONNECT: "zoo1:2181,zoo2:2182,zoo3:2183"
@@ -137,12 +113,12 @@ services:
   kafka3:
     image: confluentinc/cp-kafka:7.2.1
     hostname: kafka3
-    container_name: kafka_neo3
+    container_name: kafka_water3
     ports:
       - "9094:9094"
       - "29094:29094"
     environment:
-      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka3:19094,EXTERNAL://172.21.64.1:9094
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka3:19094,EXTERNAL://117.17.189.208:9094
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_ZOOKEEPER_CONNECT: "zoo1:2181,zoo2:2182,zoo3:2183"

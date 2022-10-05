@@ -72,3 +72,4 @@ Port: 8086
 [influx-version]: https://img.shields.io/badge/Influx-1.8.2-brightgreen
 [chronograf-version]: https://img.shields.io/badge/Chronograf-1.8.6-brightgreen
 
+connect-standalone /etc/kafka/connect-standalone.properties /etc/kafka/connect-file-source.properties

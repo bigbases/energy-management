@@ -1,0 +1,20 @@
+version: '3'
+services:
+  telegraf1:
+    container_name: telegraf_con1
+    image: telegraf:1.24.2
+    restart: always
+    volumes:
+      - ./telegraf_con1/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+  # telegraf2:
+  #   container_name: telegraf_con2
+  #   image: telegraf:1.24.2
+  #   restart: always
+  #   volumes:
+  #     - ./telegraf_con2/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+  # telegraf3:
+  #   container_name: telegraf_con3
+  #   image: telegraf:1.24.2
+  #   restart: always
+  #   volumes:
+  #     - ./telegraf_con3/telegraf.conf:/etc/telegraf/telegraf.conf:ro
