@@ -2,7 +2,7 @@
 
 docker-compose -f telegraf.yml stop
 
-# sh log.sh
+sh log.sh
 
 docker-compose -f telegraf.yml down
 
