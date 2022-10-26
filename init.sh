@@ -22,7 +22,7 @@ docker-compose up -d
 
 sleep 10
 
-docker exec -it kafka_water1 kafka-topics --bootstrap-server localhost:9092 --topic water_connect --partitions 3 --replication-factor 1 --create
+docker exec -it kafka_water1 kafka-topics --bootstrap-server localhost:9092 --topic water_connect --partitions 1 --replication-factor 1 --create
 
 sleep 5
 
