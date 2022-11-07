@@ -11,7 +11,20 @@ services:
     volumes:
       - ./volume/influxdb:/var/lib/influxdb
       - ./volume/grafana:/var/lib/grafana
-
+    networks:
+      - model_network  
+  
+  predict:
+    build:
+      context: ./prediction_model
+      dockerfile: ../python.Dockerfile
+    volumes:
+      - ./model:/model
+    networks:
+      - model_network  
+    depends_on:
+      - core
+      
   zoo1:
     image: confluentinc/cp-zookeeper:7.2.1
     hostname: zoo1
@@ -133,3 +146,7 @@ services:
       - zoo1
       - zoo2
       - zoo3
+  
+networks:
+  model_network:
+    driver: bridge
