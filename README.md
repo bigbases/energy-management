@@ -1,3 +1,7 @@
+# Publication and Related Project
+- Progject: [지능형(AI) 소규모 수도시설 통합관리시스템 개발", 행안부-과기부 협업 과학기술 활용 주민공감 현장문제 해결 사업, 2021.4 ~ 2022.6.](https://sites.google.com/view/seoultech-bigdata/projects)
+- Publication: Jeonghwan Im, Jaekyu Lee, Somin Lee, and Hyuk-Yoon Kwon*, ["Data Pipeline for Real-Time Energy Consumption Data Management and Prediction,"](https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2024.1308236/full?utm_source=Email_to_authors_&utm_medium=Email&utm_content=T1_11.5e1_author&utm_campaign=Email_publication&field&journalName=Frontiers_in_Big_Data&id=1308236) Frontiers in Big Data, Vol. 7, pp. 1-8, Mar. 2024 (Impact Factor: 3.1) (Ack: KETEP-2021202090028D and 2019R1A6A1A03032119 ).
+
 # Docker Image with InfluxDB and Grafana
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/philhawthorne/docker-influxdb-grafana.svg)](https://dockerhub.com/philhawthorne/docker-influxdb-grafana) [![license](https://img.shields.io/github/license/philhawthorne/docker-influxdb-grafana.svg)](https://dockerhub.com/philhawthorne/docker-influxdb-grafana)
@@ -17,9 +21,9 @@ The main purpose of this image is to be used to show data from a [Home Assistant
 
 | Description  | Value   |
 |--------------|---------|
-| InfluxDB     | 1.8.2   |
-| ChronoGraf   | 1.8.6   |
-| Grafana      | 7.2.0   |
+| InfluxDB     | 1.11   |
+| ChronoGraf   | latest   |
+| Grafana      | latest   |
 | Zookeeer     | 3.6.3 (confluent 7.2.1)|
 | Kafka     | 3.2.0 (confluent 7.2.1)|
 | Telegraf  | 1.19 |

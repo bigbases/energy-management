@@ -18,18 +18,19 @@ mkdir volume/kafka/kafka3/data
 
 echo 'jhim712' | sudo -S chmod 777 -Rf volume data
 
+docker-compose -f infra.yml up -d
 docker-compose up -d
 
-# sleep 10
+sleep 10
 
-# docker exec -it kafka_water1 kafka-topics --bootstrap-server localhost:9092 --topic water_connect --partitions 1 --replication-factor 1 --create
+docker exec -it kafka_water1 kafka-topics --bootstrap-server localhost:9092 --topic water_connect --partitions 1 --replication-factor 1 --create
 
-# sleep 5
+sleep 5
 
-# docker-compose -f telegraf.yml up -d
+docker-compose -f telegraf.yml up -d
 
-# sleep 5
+sleep 5
 
-# TS=$(date "+%s")
+TS=$(date "+%s")
 
-# docker exec -it kafka_water1 connect-standalone /etc/kafka/connect-standalone.properties /etc/kafka/connect-file-source.properties >> ./log/kafka/$TS.log
+docker exec -it kafka_water1 connect-standalone /etc/kafka/connect-standalone.properties /etc/kafka/connect-file-source.properties >> ./log/kafka/$TS.log

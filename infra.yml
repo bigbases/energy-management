@@ -1,0 +1,34 @@
+version: '3'
+services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+    depends_on:
+      - influxdb
+  influxdb: 
+    container_name: influxdb
+    image: influxdb:1.11
+    ports:
+      - "8086:8086"
+    environment:
+      INFLUX_USER: "testuser"
+      INFLUX_PASSWORD: "testpw"
+    volumes:
+      - "./influxdb/influx.conf:/etc/influxdb/influxdb.conf"
+  
+  chronograf:
+    container_name: chronograf
+    image: chronograf
+    ports:
+      - '3001:3001'
+    depends_on:
+      - influxdb
+    environment:
+      - INFLUXDB_URL: "http://influxdb:8086"
+      - INFLUXDB_USERNAME: "testuser"
+      - INFLUXDB_PASSWORD: "testpw"
+    
